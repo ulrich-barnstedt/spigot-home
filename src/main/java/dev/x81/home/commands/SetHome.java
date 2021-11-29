@@ -1,6 +1,6 @@
 package dev.x81.home.commands;
 
-import dev.x81.home.ConfigLoader;
+import dev.x81.home.Home;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -18,8 +18,7 @@ public class SetHome implements CommandExecutor {
         UUID id = player.getUniqueId();
         Location at = player.getLocation();
 
-        ConfigLoader.getInstance().properties.setProperty(id.toString(), String.valueOf(at.serialize()));
-        ConfigLoader.getInstance().write();
+        Home.running.getConfig().set("homes." + id, at);
 
         sender.sendMessage(ChatColor.ITALIC + "" + ChatColor.GRAY + "Successfully set home.");
         return true;
