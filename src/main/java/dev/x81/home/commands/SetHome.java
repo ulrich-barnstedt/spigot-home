@@ -19,6 +19,7 @@ public class SetHome implements CommandExecutor {
         Location at = player.getLocation();
 
         Home.running.getConfig().set("homes." + id, at);
+        Home.running.saveConfig();
 
         sender.sendMessage(ChatColor.ITALIC + "" + ChatColor.GRAY + "Successfully set home.");
         return true;

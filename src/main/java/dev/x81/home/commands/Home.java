@@ -1,11 +1,12 @@
 package dev.x81.home.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
 import java.util.UUID;
 
 public class Home implements CommandExecutor {
@@ -16,10 +17,14 @@ public class Home implements CommandExecutor {
 
         UUID id = player.getUniqueId();
 
-        //if (!config.properties.containsKey(id)) {
-        //    sender.sendMessage(ChatColor.RED + "You do not have a home.");
-        //    return true;
-        //}
+        if (!dev.x81.home.Home.running.getConfig().contains("homes." + id)) {
+            sender.sendMessage(ChatColor.RED + "You do not have a home.");
+            return true;
+        }
+
+        Location target = dev.x81.home.Home.running.getConfig().getObject("homes." + id, Location.class);
+        player.teleport(target);
+        sender.sendMessage(ChatColor.ITALIC + "" + ChatColor.GRAY + "Teleported you to your home.");
 
         return true;
     }

@@ -3,10 +3,20 @@ version: '${project.version}'
 main: dev.x81.home.Home
 api-version: 1.17
 prefix: x81-home
+load: POSTWORLD
 commands:
   sethome:
     description: Set your home to your current location
     usage: /sethome
     aliases:
       - sh
-      - seth
+  home:
+      description: Teleport to your home
+      usage: /home
+      aliases:
+        - h
+  homeof:
+    description: Teleport to the home of another player
+    usage: /homeof
+    aliases:
+      - ho
