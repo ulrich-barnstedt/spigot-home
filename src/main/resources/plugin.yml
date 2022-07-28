@@ -1,7 +1,7 @@
 name: Home
 version: '${project.version}'
 main: dev.x81.home.Home
-api-version: 1.18
+api-version: 1.19
 prefix: x81-home
 load: POSTWORLD
 commands:

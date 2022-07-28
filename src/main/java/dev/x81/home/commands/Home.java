@@ -11,8 +11,7 @@ import java.util.UUID;
 public class Home implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) return true;
-        Player player = (Player) sender;
+        if (!(sender instanceof Player player)) return true;
 
         UUID id = player.getUniqueId();
 

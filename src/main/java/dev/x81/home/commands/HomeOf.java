@@ -8,12 +8,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import java.util.UUID;
+import dev.x81.home.Home;
 
 public class HomeOf implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) return true;
-        Player player = (Player) sender;
+        if (!(sender instanceof Player player)) return true;
 
         if (!player.isOp()) {
             player.sendMessage(ChatColor.RED + "You do not have sufficient permissions.");
@@ -31,12 +31,12 @@ public class HomeOf implements CommandExecutor {
             targetId = online.getUniqueId();
         }
 
-        if (!dev.x81.home.Home.running.getConfig().contains("homes." + targetId)) {
+        if (!Home.running.getConfig().contains("homes." + targetId)) {
             sender.sendMessage(ChatColor.RED + "This player does not have a home.");
             return true;
         }
 
-        Location tpTo = dev.x81.home.Home.running.getConfig().getObject("homes." + targetId, Location.class);
+        Location tpTo = Home.running.getConfig().getObject("homes." + targetId, Location.class);
         player.teleport(tpTo);
         sender.sendMessage(ChatColor.ITALIC + "" + ChatColor.GRAY + "Teleported you to the players home.");
 
