@@ -19,7 +19,6 @@ public final class Home extends JavaPlugin {
     }
 
     public void setupConfig () {
-        config.addDefault("test", true);
         config.options().copyDefaults(true);
         saveConfig();
     }
